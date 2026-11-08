@@ -1,0 +1,64 @@
+---
+title: FAQ & troubleshooting
+description: Answers to common questions, and fixes for common problems.
+---
+
+import { siteConfig } from "../../../site.config";
+
+## Is Simple Desk really free?
+
+Yes. There's no paid tier, no account and no ads.
+
+## Where are my files?
+
+In your library folder, `Documents/Simple Desk` unless you moved it (Settings → Files shows where), and in any locations
+you added to the Files panel. They're normal files: open them in Explorer or Finder like any other.
+
+## Does Simple Desk sync my files between computers?
+
+Not by itself. Put your library in a OneDrive, Dropbox or Google Drive folder and let that service sync it; see
+[Using several computers](/docs/several-computers/). To edit a document with someone at the same time, use
+[live sharing](/docs/sharing/live-sharing/).
+
+## Is the source code available?
+
+No, the source code is private for now. The app's files are published on
+[GitHub releases](https://github.com/jboullion/simple-desk-releases/releases).
+
+## Windows says "Windows protected your PC"
+
+The installer isn't code-signed yet, so SmartScreen doesn't recognize it. Click **More info → Run anyway**. See
+[Install](/docs/install/).
+
+## macOS says Simple Desk can't be opened
+
+The app isn't signed with an Apple Developer ID yet. Open it once, then go to **System Settings → Privacy & Security** and
+click **Open Anyway**. You only need to do this once.
+
+## The Linux AppImage doesn't start
+
+Make it executable first: `chmod +x Simple-Desk_*.AppImage`. Some distributions also need FUSE for AppImages
+(`libfuse2` on Ubuntu); if it's missing, install that package or use the `.deb` or `.rpm` instead.
+
+## My AI key isn't remembered on Linux
+
+Keys are stored in the Secret Service. Make sure GNOME Keyring or KWallet is installed and unlocked.
+
+## I can't find the To-do (or Calculator, JSON…) app
+
+Some apps start turned off. Turn them on in **Settings → Apps**.
+
+## A file opens in the wrong app
+
+Right-click it in the Files panel and pick another app under **Open with**. See
+[Opening and saving files](/docs/files/#which-app-opens-what) for the defaults.
+
+## The update icon won't go away
+
+Open **Settings → About** and choose **Update and restart** (or **Skip this version**). If an update fails, download the
+latest version from the [download page](/download/) and install it over the old one; your files and settings are kept.
+
+## Something else is wrong
+
+Email <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a> with what happened, your system, and the version in
+Settings → About.

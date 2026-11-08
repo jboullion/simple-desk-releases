@@ -1,4 +1,298 @@
 ---
+import { Image } from "astro:assets";
+import {
+  ArrowRight,
+  Bot,
+  Download,
+  FolderOpen,
+  Lock,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Undo2,
+  Users,
+} from "lucide-static";
+import Icon from "../components/Icon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { apps } from "../lib/apps";
+import { platforms } from "../lib/platforms";
+import { getLatestRelease } from "../lib/release";
+import { url } from "../lib/url";
+import aiShot from "../assets/screens/ai.png";
+import boardShot from "../assets/screens/board.png";
+import csvShot from "../assets/screens/csv.png";
+import graphShot from "../assets/screens/graph.png";
+import heroDark from "../assets/screens/markdown-dark.png";
+import heroLight from "../assets/screens/markdown.png";
+
+const release = await getLatestRelease();
+
+const gallery = [
+  { src: csvShot, alt: "The CSV editor showing a budget spreadsheet with column statistics in a side panel", label: "CSV" },
+  { src: boardShot, alt: "A mind map on the Board whiteboard", label: "Board" },
+  { src: graphShot, alt: "The graphing calculator plotting a sine wave and a parabola with a slider", label: "Graphing" },
+];
+
+const button =
+  "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium no-underline transition";
 ---
-<BaseLayout><p>Home</p></BaseLayout>
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="overflow-hidden border-b border-border bg-bg-subtle">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:py-20">
+      <div>
+        <p class="text-sm font-medium text-fg-muted">Free · Windows, macOS, Linux and Android</p>
+        <h1 class="mt-3 text-4xl leading-[1.1] font-bold tracking-tight text-fg-strong sm:text-5xl">
+          Your everyday office apps, on your own files.
+        </h1>
+        <p class="mt-5 text-lg text-fg-muted">
+          Markdown, spreadsheets, PDFs, drawing, a whiteboard, a graphing calculator and more, in one quick window.
+          Everything is a normal file in a folder you choose. No account, no subscription, no tracking.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={url("download/")} data-download-cta class={`${button} bg-accent text-accent-fg hover:brightness-110`}>
+            <Icon svg={Download} size={18} />
+            <span data-download-label>Download free</span>
+          </a>
+          <a href={url("docs/")} class={`${button} border border-border bg-bg text-fg hover:bg-bg-muted`}>
+            Read the docs
+          </a>
+        </div>
+        {
+          release && (
+            <p class="mt-4 text-sm text-fg-muted">
+              Version {release.version} ·{" "}
+              <a href={url("download/")} class="underline hover:text-fg">
+                all platforms
+              </a>
+            </p>
+          )
+        }
+      </div>
+      <div class="relative">
+        <div class="rounded-xl border border-border bg-bg p-1.5 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.35)]">
+          <Image
+            src={heroLight}
+            alt="Simple Desk editing a Markdown trip plan, with the text on the left and the live preview, a table, a checklist and a diagram on the right"
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            class="hero-light block h-auto w-full rounded-lg"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <Image
+            src={heroDark}
+            alt="Simple Desk editing a Markdown trip plan in the dark theme"
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            class="hero-dark block h-auto w-full rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apps -->
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="apps-title">
+    <h2 id="apps-title" class="text-3xl font-bold tracking-tight text-fg-strong">Eleven apps, one window</h2>
+    <p class="mt-3 max-w-2xl text-lg text-fg-muted">
+      Open any file and it lands in the right app, in a tab. Turn off the apps you don't need in Settings.
+    </p>
+    <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        apps.map((app) => (
+          <li style={`--tool:${app.color}`}>
+            <a
+              href={url(`docs/apps/${app.slug}/`)}
+              class="group flex h-full gap-4 rounded-xl border border-border bg-bg-subtle p-5 no-underline transition hover:border-(--tool)"
+            >
+              <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[color-mix(in_srgb,var(--tool)_14%,transparent)] text-(--tool)">
+                <Icon svg={app.icon} size={20} />
+              </span>
+              <span>
+                <span class="block font-semibold text-fg-strong">{app.name}</span>
+                <span class="mt-1 block text-sm leading-relaxed text-fg-muted">{app.summary}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Gallery -->
+  <section class="border-y border-border bg-bg-subtle" aria-label="Screenshots">
+    <div class="mx-auto grid max-w-6xl gap-6 px-4 py-14 sm:px-6 md:grid-cols-3">
+      {
+        gallery.map((g) => (
+          <figure class="m-0">
+            <Image
+              src={g.src}
+              alt={g.alt}
+              widths={[480, 800]}
+              sizes="(min-width: 768px) 360px, 100vw"
+              class="block h-auto w-full rounded-lg border border-border"
+            />
+            <figcaption class="mt-2 text-sm text-fg-muted">{g.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Your files -->
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="files-title">
+    <h2 id="files-title" class="text-3xl font-bold tracking-tight text-fg-strong">Your files stay yours</h2>
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      <div>
+        <Icon svg={FolderOpen} size={26} class="text-folder" />
+        <h3 class="mt-3 text-lg font-semibold text-fg-strong">Plain files on your disk</h3>
+        <p class="mt-2 text-fg-muted">
+          Markdown is .md, spreadsheets are .csv, boards are SVG files any browser opens. Nothing is locked in a
+          database, and every file still opens in other apps.
+        </p>
+      </div>
+      <div>
+        <Icon svg={ShieldCheck} size={26} class="text-(--tool-csv)" />
+        <h3 class="mt-3 text-lg font-semibold text-fg-strong">No account, no tracking</h3>
+        <p class="mt-2 text-fg-muted">
+          There's nothing to sign up for and no analytics. The app goes online to check for updates and for the
+          features you choose that need it, like AI and sharing. <a href={url("privacy/")} class="text-accent-high underline dark:text-accent">Privacy policy</a>
+        </p>
+      </div>
+      <div>
+        <Icon svg={RefreshCw} size={26} class="text-(--tool-markdown)" />
+        <h3 class="mt-3 text-lg font-semibold text-fg-strong">On every computer you use</h3>
+        <p class="mt-2 text-fg-muted">
+          Keep your library in a OneDrive, Dropbox or Google Drive folder and the files follow you to every machine.
+          <a href={url("docs/several-computers/")} class="text-accent-high underline dark:text-accent">How</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section class="border-t border-border bg-bg-subtle" aria-labelledby="ai-title">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2">
+      <div>
+        <h2 id="ai-title" class="text-3xl font-bold tracking-tight text-fg-strong">AI that edits with you, if you want it</h2>
+        <p class="mt-3 text-lg text-fg-muted">
+          AI is optional and off until you set it up. Bring your own key, or run a model on your own computer.
+        </p>
+        <ul class="mt-8 space-y-5">
+          <li class="flex gap-3">
+            <Icon svg={Sparkles} size={22} class="mt-0.5 text-accent" />
+            <span class="text-fg-muted"><strong class="text-fg">AI sidebar.</strong> Ask about the document in front of you;
+              its edits appear live with its name on the cursor. Works with Claude, OpenAI, OpenRouter, xAI, Ollama and
+              any OpenAI-compatible server.</span>
+          </li>
+          <li class="flex gap-3">
+            <Icon svg={Undo2} size={22} class="mt-0.5 text-accent" />
+            <span class="text-fg-muted"><strong class="text-fg">Every change can be undone.</strong> Each edit gets its own
+              Undo, even after you kept typing, and deleting or overwriting asks first.</span>
+          </li>
+          <li class="flex gap-3">
+            <Icon svg={Bot} size={22} class="mt-0.5 text-accent" />
+            <span class="text-fg-muted"><strong class="text-fg">Agents over MCP.</strong> Let Claude Desktop, Claude Code,
+              Codex or any MCP client work in your library, with the permission level you choose.</span>
+          </li>
+        </ul>
+        <p class="mt-8">
+          <a href={url("docs/ai/sidebar/")} class="inline-flex items-center gap-1.5 font-medium text-accent-high no-underline hover:underline dark:text-accent">
+            How AI works in Simple Desk <Icon svg={ArrowRight} size={16} />
+          </a>
+        </p>
+      </div>
+      <Image
+        src={aiShot}
+        alt="The AI sidebar next to a Markdown document: the AI replaced a word in the packing list and offers an Undo button"
+        widths={[640, 960, 1280]}
+        sizes="(min-width: 1024px) 560px, 100vw"
+        class="block h-auto w-full rounded-xl border border-border"
+      />
+    </div>
+  </section>
+
+  <!-- Sharing -->
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="share-title">
+    <div class="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div>
+        <h2 id="share-title" class="text-3xl font-bold tracking-tight text-fg-strong">Write together, privately</h2>
+        <p class="mt-3 text-lg text-fg-muted">
+          Share a Markdown document with a link and edit it together live, each person with their own cursor. It
+          keeps working offline and merges when you're back.
+        </p>
+        <p class="mt-6">
+          <a href={url("docs/sharing/live-sharing/")} class="inline-flex items-center gap-1.5 font-medium text-accent-high no-underline hover:underline dark:text-accent">
+            Live sharing <Icon svg={ArrowRight} size={16} />
+          </a>
+        </p>
+      </div>
+      <ul class="space-y-5 self-center">
+        <li class="flex gap-3">
+          <Icon svg={Lock} size={22} class="mt-0.5 text-(--tool-board)" />
+          <span class="text-fg-muted"><strong class="text-fg">End-to-end encrypted.</strong> The key is in the link and
+            never reaches a server; the relay only passes along data it can't read.</span>
+        </li>
+        <li class="flex gap-3">
+          <Icon svg={Users} size={22} class="mt-0.5 text-(--tool-board)" />
+          <span class="text-fg-muted"><strong class="text-fg">No accounts.</strong> Anyone with the link can join, on desktop
+            or Android, and the document is saved as an ordinary file on each device.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Platforms + CTA -->
+  <section class="border-t border-border bg-bg-subtle" aria-labelledby="get-title">
+    <div class="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20">
+      <h2 id="get-title" class="text-3xl font-bold tracking-tight text-fg-strong">Get Simple Desk</h2>
+      <p class="mx-auto mt-3 max-w-xl text-lg text-fg-muted">
+        Free, on every computer and phone you use. It updates itself when there's a new version.
+      </p>
+      <ul class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
+        {
+          platforms.map((p) => (
+            <li>
+              <a
+                href={url(`download/#${p.id}`)}
+                class="flex flex-col items-center gap-2 rounded-xl border border-border bg-bg px-4 py-5 text-fg no-underline transition hover:border-accent"
+              >
+                <Icon svg={p.icon} size={26} />
+                <span class="font-medium">{p.name}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href={url("download/")} class={`${button} mt-10 bg-accent text-accent-fg hover:brightness-110`}>
+        <Icon svg={Download} size={18} />
+        Go to downloads
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-dark {
+    display: none;
+  }
+  :global([data-theme="dark"]) .hero-light {
+    display: none;
+  }
+  :global([data-theme="dark"]) .hero-dark {
+    display: block;
+  }
+</style>
+
+<script>
+  import { detectPlatform, platformNames } from "../lib/detect";
+  const platform = detectPlatform();
+  const label = document.querySelector("[data-download-label]");
+  const cta = document.querySelector<HTMLAnchorElement>("[data-download-cta]");
+  if (platform && label && cta) {
+    label.textContent = `Download for ${platformNames[platform]}`;
+    cta.href = `${cta.pathname}#${platform}`;
+  }
+</script>

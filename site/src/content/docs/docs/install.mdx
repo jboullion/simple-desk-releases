@@ -1,0 +1,104 @@
+---
+title: Install
+description: Install Simple Desk on Windows, macOS, Linux or Android, and get past the first-launch warnings.
+---
+
+import { Aside, Steps, TabItem, Tabs } from "@astrojs/starlight/components";
+
+Get the file for your system from the [download page](/download/). Every release has a Windows installer, one macOS
+app for Apple Silicon and Intel Macs, Linux packages and an Android APK. All of them are free.
+
+<Aside type="note" title="Why the warnings?">
+  Simple Desk isn't code-signed with a paid Microsoft or Apple certificate yet, so Windows and macOS don't recognize
+  the developer and warn you the first time. The steps below get past that once; updates after that install
+  normally.
+</Aside>
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+<Steps>
+
+1. Download `Simple.Desk_<version>_x64-setup.exe`.
+2. Run it. If Windows SmartScreen says "Windows protected your PC", click **More info**, then **Run anyway**.
+3. Follow the installer. Simple Desk appears in the Start menu, and `.md`, `.csv` and `.pdf` files can open with it
+   (right-click a file → **Open with**).
+
+</Steps>
+
+Works on Windows 10 and 11 (64-bit).
+
+</TabItem>
+<TabItem label="macOS">
+
+<Steps>
+
+1. Download `Simple-Desk_<version>_universal.dmg`. The same file works on Apple Silicon and Intel Macs.
+2. Open it and drag **Simple Desk** to **Applications**.
+3. Open Simple Desk from Applications. macOS blocks it the first time because it isn't signed with an Apple Developer
+   ID; click **Done**.
+4. Open **System Settings → Privacy & Security**, scroll down to the message about Simple Desk and click
+   **Open Anyway**, then confirm. (On older macOS versions: right-click the app → **Open**.)
+
+</Steps>
+
+You only do this once; updates install without asking again.
+
+</TabItem>
+<TabItem label="Linux">
+
+Simple Desk is built for x86-64 Linux. Pick one:
+
+- **AppImage** (`Simple-Desk_<version>_amd64.AppImage`) runs on most distributions without installing. Make it
+  executable and run it:
+
+  ```bash
+  chmod +x Simple-Desk_*_amd64.AppImage
+  ./Simple-Desk_*_amd64.AppImage
+  ```
+
+  The AppImage updates itself.
+- **.deb** (`Simple-Desk_<version>_amd64.deb`) for Debian, Ubuntu and Mint:
+
+  ```bash
+  sudo apt install ./Simple-Desk_*_amd64.deb
+  ```
+
+- **.rpm** (`Simple-Desk_<version>_x86_64.rpm`) for Fedora and openSUSE:
+
+  ```bash
+  sudo dnf install ./Simple-Desk_*_x86_64.rpm
+  ```
+
+The .deb and .rpm install system-wide, so updating asks for your password.
+
+AI keys are kept in the Secret Service (GNOME Keyring or KWallet). On a desktop with neither, Simple Desk works but
+can't remember AI keys.
+
+</TabItem>
+<TabItem label="Android">
+
+<Steps>
+
+1. On your phone, download `Simple-Desk_<version>_android.apk`.
+2. Open it. The first time, Android asks you to allow your browser (or file manager) to install apps: tap
+   **Settings**, allow it, and go back.
+3. Tap **Install**.
+
+</Steps>
+
+Needs Android 7.0 or later. See [Phone app](/docs/sharing/phone/) for what's different on a phone.
+
+</TabItem>
+</Tabs>
+
+## Uninstalling
+
+On a computer, uninstalling removes the app but never your documents: they stay in your library folder (by default
+`Documents/Simple Desk`).
+
+- **Windows:** Settings → Apps → Simple Desk → Uninstall.
+- **macOS:** drag Simple Desk from Applications to the Trash.
+- **Linux:** delete the AppImage, or `sudo apt remove simple-desk` / `sudo dnf remove simple-desk`.
+- **Android:** long-press the icon → App info → Uninstall. On Android the library lives inside the app, so its
+  documents are removed with it.

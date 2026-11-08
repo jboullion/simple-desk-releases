@@ -2,7 +2,8 @@
 import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import { remarkBaseLinks } from "./src/lib/remark-base-links.mjs";
+import { satteri } from "@astrojs/markdown-satteri";
+import { baseLinksPlugin } from "./src/lib/base-links.mjs";
 import { releasesUrl, siteConfig } from "./src/site.config.ts";
 
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
   base: siteConfig.base,
   trailingSlash: "ignore",
   markdown: {
-    remarkPlugins: [remarkBaseLinks({ base: siteConfig.base })],
+    processor: satteri({ hastPlugins: [baseLinksPlugin(siteConfig.base)] }),
   },
   integrations: [
     starlight({
