@@ -162,6 +162,11 @@
   --font-mono: "Cascadia Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
 }
 
+/* Docs header: the site name in the strong text color, like the rest of the site. */
+.site-title {
+  color: var(--sl-color-white);
+}
+
 /* Docs screenshots: a hairline so white UI doesn't melt into a white page. */
 .sl-markdown-content img {
   border: 1px solid var(--border);
