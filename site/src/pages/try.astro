@@ -1,0 +1,31 @@
+---
+import { Download, Hourglass } from "lucide-static";
+import Icon from "../components/Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../lib/url";
+---
+
+<BaseLayout title="Try it in your browser" description="A version of Simple Desk that runs in your browser is on the way.">
+  <section class="mx-auto flex max-w-2xl flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28">
+    <span class="flex size-14 items-center justify-center rounded-2xl bg-accent-low text-accent-high dark:text-accent">
+      <Icon svg={Hourglass} size={28} />
+    </span>
+    <h1 class="mt-6 text-3xl font-bold tracking-tight text-fg-strong sm:text-4xl">Try it in your browser: coming soon</h1>
+    <p class="mt-4 text-lg text-fg-muted">
+      A version of Simple Desk that runs right here, with sample files and nothing leaving your browser, is on the way.
+      Until then, the app itself is a free download.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a
+        href={url("download/")}
+        class="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-fg no-underline hover:brightness-110"
+      >
+        <Icon svg={Download} size={18} />
+        Download Simple Desk
+      </a>
+      <a href={url("docs/")} class="inline-flex items-center rounded-lg border border-border px-5 py-2.5 text-fg no-underline hover:bg-bg-muted">
+        Read the docs
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+// Footer for every page: the site's own pages and (through the Starlight Footer override) the docs.
+import { Coffee } from "lucide-static";
+import { buyMeACoffeeUrl, releasesUrl, siteConfig } from "../site.config";
+import { url } from "../lib/url";
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+
+const links = [
+  { label: "Download", href: url("download/") },
+  { label: "Docs", href: url("docs/") },
+  { label: "Privacy", href: url("privacy/") },
+  { label: "Terms", href: url("terms/") },
+  { label: "Releases on GitHub", href: releasesUrl },
+];
+---
+
+<footer class="site-footer border-t border-border bg-bg-subtle">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"
+  >
+    <div class="flex items-center gap-3">
+      <Logo size={32} />
+      <div class="leading-snug">
+        <p class="m-0 font-semibold text-fg-strong">{siteConfig.name}</p>
+        <p class="m-0 text-sm text-fg-muted">{siteConfig.tagline}</p>
+      </div>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-sm">
+        {
+          links.map((l) => (
+            <li class="m-0">
+              <a href={l.href} class="text-fg-muted no-underline hover:text-fg hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    {
+      buyMeACoffeeUrl && (
+        <a
+          href={buyMeACoffeeUrl}
+          class="inline-flex items-center gap-2 self-start rounded-full bg-[#ffdd00] px-4 py-2 text-sm font-semibold text-[#1c1f24] no-underline hover:brightness-95 md:self-auto"
+        >
+          <Icon svg={Coffee} size={18} />
+          Buy me a coffee
+        </a>
+      )
+    }
+  </div>
+</footer>

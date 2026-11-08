@@ -1,0 +1,169 @@
+/*
+  Shared by the docs (Starlight customCss) and the site's own pages (BaseLayout).
+  Colors are the app's tokens (james-office src/styles.css), light and dark. The theme follows the system unless the
+  visitor picks one: an inline script sets <html data-theme="light|dark">, the same way Starlight does, and both use the
+  "starlight-theme" localStorage key, so the choice carries between docs and the rest of the site.
+*/
+@layer base, starlight, theme, components, utilities;
+
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+:root,
+::backdrop {
+  --bg: #ffffff;
+  --bg-subtle: #f6f7f9;
+  --bg-muted: #eceef2;
+  --fg: #1c1f24;
+  --fg-muted: #626a75;
+  --border: #dde1e6;
+  --accent: #2f6fde;
+  --accent-fg: #ffffff;
+  --danger: #c93a3a;
+  --warn-bg: #fff5d6;
+  --warn-fg: #6b4e00;
+  --tool-todo: #d97706;
+  --tool-markdown: #2563eb;
+  --tool-csv: #16a34a;
+  --tool-pdf: #dc2626;
+  --tool-paint: #db2777;
+  --tool-board: #7c3aed;
+  --tool-calculator: #0d9488;
+  --tool-meme: #ea580c;
+  --tool-images: #4d7c0f;
+  --tool-api: #4f46e5;
+  --tool-json: #0891b2;
+  --folder: #9a6a3a;
+  /* Extra steps for Starlight's gray scale (strongest text first). */
+  --fg-strong: #0f1114;
+  --gray-2: #3a3f47;
+  --gray-4: #8b929c;
+  --gray-5: #c9ced5;
+  --accent-high: #1f4fa6;
+  --accent-low: #dbe7fc;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"],
+[data-theme="dark"] ::backdrop {
+  --bg: #17191d;
+  --bg-subtle: #1e2126;
+  --bg-muted: #2a2e35;
+  --fg: #e3e6ea;
+  --fg-muted: #9aa2ad;
+  --border: #30353d;
+  --accent: #5b93f0;
+  --accent-fg: #0d1117;
+  --danger: #ef6b6b;
+  --warn-bg: #3d3214;
+  --warn-fg: #f3d98b;
+  --tool-todo: #fbbf24;
+  --tool-markdown: #60a5fa;
+  --tool-csv: #4ade80;
+  --tool-pdf: #f87171;
+  --tool-paint: #f472b6;
+  --tool-board: #a78bfa;
+  --tool-calculator: #2dd4bf;
+  --tool-meme: #fb923c;
+  --tool-images: #a3e635;
+  --tool-api: #818cf8;
+  --tool-json: #22d3ee;
+  --folder: #d2a679;
+  --fg-strong: #f5f6f8;
+  --gray-2: #c4cad2;
+  --gray-4: #646b76;
+  --gray-5: #353a42;
+  --accent-high: #bcd3fa;
+  --accent-low: #1a2d52;
+  color-scheme: dark;
+}
+
+/* Without JavaScript there's no data-theme: follow the system. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #17191d;
+    --bg-subtle: #1e2126;
+    --bg-muted: #2a2e35;
+    --fg: #e3e6ea;
+    --fg-muted: #9aa2ad;
+    --border: #30353d;
+    --accent: #5b93f0;
+    --accent-fg: #0d1117;
+    --danger: #ef6b6b;
+    --warn-bg: #3d3214;
+    --warn-fg: #f3d98b;
+    --tool-todo: #fbbf24;
+    --tool-markdown: #60a5fa;
+    --tool-csv: #4ade80;
+    --tool-pdf: #f87171;
+    --tool-paint: #f472b6;
+    --tool-board: #a78bfa;
+    --tool-calculator: #2dd4bf;
+    --tool-meme: #fb923c;
+    --tool-images: #a3e635;
+    --tool-api: #818cf8;
+    --tool-json: #22d3ee;
+    --folder: #d2a679;
+    --fg-strong: #f5f6f8;
+    --gray-2: #c4cad2;
+    --gray-4: #646b76;
+    --gray-5: #353a42;
+    --accent-high: #bcd3fa;
+    --accent-low: #1a2d52;
+    color-scheme: dark;
+  }
+}
+
+/*
+  Starlight's palette, mapped onto the tokens above. Unlayered, so it wins over Starlight's own (layered) values in
+  both themes; Starlight derives text, nav and hairline colors from these.
+*/
+:root,
+::backdrop {
+  --sl-font: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --sl-font-mono: "Cascadia Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --sl-color-white: var(--fg-strong);
+  --sl-color-gray-1: var(--fg);
+  --sl-color-gray-2: var(--gray-2);
+  --sl-color-gray-3: var(--fg-muted);
+  --sl-color-gray-4: var(--gray-4);
+  --sl-color-gray-5: var(--gray-5);
+  --sl-color-gray-6: var(--bg-muted);
+  --sl-color-gray-7: var(--bg-subtle);
+  --sl-color-black: var(--bg);
+  --sl-color-accent: var(--accent);
+  --sl-color-accent-high: var(--accent-high);
+  --sl-color-accent-low: var(--accent-low);
+  --sl-color-hairline: var(--border);
+}
+:root[data-theme="dark"] {
+  --sl-color-gray-6: var(--bg-subtle);
+  --sl-color-text: var(--fg);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-muted: var(--bg-muted);
+  --color-fg: var(--fg);
+  --color-fg-strong: var(--fg-strong);
+  --color-fg-muted: var(--fg-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-high: var(--accent-high);
+  --color-accent-low: var(--accent-low);
+  --color-danger: var(--danger);
+  --color-warn-bg: var(--warn-bg);
+  --color-warn-fg: var(--warn-fg);
+  --color-folder: var(--folder);
+  --font-sans: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "Cascadia Mono", Consolas, ui-monospace, monospace;
+}
+
+/* Docs screenshots: a hairline so white UI doesn't melt into a white page. */
+.sl-markdown-content img {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,152 @@
+---
+import { Download, ExternalLink } from "lucide-static";
+import Icon from "../components/Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { platforms } from "../lib/platforms";
+import { formatDate, formatSize, getLatestRelease, type PlatformId } from "../lib/release";
+import { url } from "../lib/url";
+import { latestReleaseUrl, releasesUrl } from "../site.config";
+
+const release = await getLatestRelease();
+
+const notes: Record<PlatformId, string> = {
+  windows:
+    "The installer isn't code-signed yet, so Windows SmartScreen may warn about it the first time. Click <strong>More info</strong>, then <strong>Run anyway</strong>.",
+  macos:
+    "Open the .dmg and drag Simple Desk to Applications. The app isn't signed with an Apple Developer ID yet, so macOS blocks the first launch: open it once, then go to <strong>System Settings → Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>. Updates after that install without asking.",
+  linux:
+    "The AppImage runs on most distributions: make it executable (<code>chmod +x Simple-Desk_*.AppImage</code>) and run it; it updates itself. The .deb and .rpm install system-wide. AI keys are kept in GNOME Keyring or KWallet.",
+  android:
+    "Open the APK on your phone. Android asks you to allow your browser or file manager to install apps the first time; allow it, then tap <strong>Install</strong>.",
+};
+---
+
+<BaseLayout
+  title="Download"
+  description="Download Simple Desk for Windows, macOS, Linux and Android. Free, no account needed."
+>
+  <section class="border-b border-border bg-bg-subtle">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <h1 class="text-3xl font-bold tracking-tight text-fg-strong sm:text-4xl">Download Simple Desk</h1>
+      <p class="mt-3 max-w-2xl text-lg text-fg-muted">
+        Free for Windows, macOS, Linux and Android. No account, no sign-up: install it and open your files.
+      </p>
+      {
+        release ? (
+          <p class="mt-4 text-sm text-fg-muted">
+            Version <strong class="text-fg">{release.version}</strong>, released {formatDate(release.publishedAt)}.
+            Installed apps update themselves.
+          </p>
+        ) : (
+          <p class="mt-4 text-sm text-fg-muted">
+            The current files are on the <a class="text-accent-high underline dark:text-accent" href={latestReleaseUrl}>latest release</a> page.
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14" aria-label="Downloads">
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        platforms.map((p) => {
+          const files = release?.files[p.id] ?? [];
+          return (
+            <article
+              id={p.id}
+              data-platform={p.id}
+              class="platform-card flex flex-col rounded-xl border border-border bg-bg p-5 sm:p-6"
+            >
+              <div class="flex items-start gap-3">
+                <span class="flex size-11 items-center justify-center rounded-lg bg-bg-muted text-fg">
+                  <Icon svg={p.icon} size={22} />
+                </span>
+                <div class="min-w-0 flex-1">
+                  <h2 class="flex flex-wrap items-center gap-2 text-xl font-semibold text-fg-strong">
+                    {p.name}
+                    <span class="detected-badge hidden rounded-full bg-accent-low px-2 py-0.5 text-xs font-medium text-accent-high dark:text-fg">
+                      Your system
+                    </span>
+                  </h2>
+                  <p class="text-sm text-fg-muted">{p.requirements}</p>
+                </div>
+              </div>
+
+              <div class="mt-5 flex flex-col gap-2">
+                {files.length > 0 ? (
+                  files.map((f, i) => (
+                    <a
+                      href={f.url}
+                      class:list={[
+                        "flex items-center gap-3 rounded-lg px-4 py-2.5 no-underline",
+                        i === 0
+                          ? "bg-accent font-medium text-accent-fg hover:brightness-110"
+                          : "border border-border text-fg hover:bg-bg-muted",
+                      ]}
+                    >
+                      <Icon svg={Download} size={18} />
+                      <span class="flex-1">{f.label}</span>
+                      <span class:list={["text-sm", i === 0 ? "opacity-85" : "text-fg-muted"]}>{formatSize(f.size)}</span>
+                    </a>
+                  ))
+                ) : (
+                  <a
+                    href={latestReleaseUrl}
+                    class="flex items-center gap-3 rounded-lg border border-border px-4 py-2.5 text-fg no-underline hover:bg-bg-muted"
+                  >
+                    <Icon svg={ExternalLink} size={18} />
+                    <span class="flex-1">{release ? "Not in this release: see all releases" : "Get it from the latest release"}</span>
+                  </a>
+                )}
+              </div>
+
+              <p class="mt-4 text-sm leading-relaxed text-fg-muted [&_code]:text-[0.85em] [&_strong]:font-semibold [&_strong]:text-fg" set:html={notes[p.id]} />
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <p class="mt-8 text-sm text-fg-muted">
+      Step-by-step instructions are in <a class="text-accent-high underline dark:text-accent" href={url("docs/install/")}>Install</a>.
+      Older versions are on
+      <a class="text-accent-high underline dark:text-accent" href={releasesUrl}>GitHub releases</a>.
+    </p>
+  </section>
+
+  {
+    release?.notesHtml && (
+      <section class="border-t border-border">
+        <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+          <h2 class="text-2xl font-semibold text-fg-strong">What's new in {release.version}</h2>
+          <div class="prose mt-4" set:html={release.notesHtml} />
+          <p class="mt-6 text-sm">
+            <a class="text-accent-high underline dark:text-accent" href={release.url}>Release {release.tag} on GitHub</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .platform-card[data-detected] {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .platform-card[data-detected] .detected-badge {
+    display: inline-block;
+  }
+</style>
+
+<script>
+  import { detectPlatform } from "../lib/detect";
+  const platform = detectPlatform();
+  if (platform) {
+    const card = document.querySelector<HTMLElement>(`[data-platform="${platform}"]`);
+    if (card) {
+      card.dataset.detected = "";
+      card.parentElement?.prepend(card);
+    }
+  }
+</script>

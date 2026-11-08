@@ -1,0 +1,103 @@
+/* Only on the site's own pages (not the docs, which have Starlight's reset). */
+@import "tailwindcss/preflight.css" layer(base);
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a[href],
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  code,
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--bg-muted);
+    border-radius: 4px;
+    padding: 0.1em 0.35em;
+  }
+}
+
+@layer components {
+  /* Long-form text: privacy, terms, release notes. */
+  .prose {
+    max-width: 44rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .prose > * + * {
+    margin-top: 1em;
+  }
+  .prose h1 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--fg-strong);
+    letter-spacing: -0.01em;
+  }
+  .prose h2 {
+    margin-top: 2.25em;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    font-weight: 650;
+    color: var(--fg-strong);
+  }
+  .prose h3 {
+    margin-top: 1.75em;
+    font-size: 1.1rem;
+    font-weight: 650;
+    color: var(--fg-strong);
+  }
+  .prose ul,
+  .prose ol {
+    padding-left: 1.4em;
+  }
+  .prose ul {
+    list-style: disc;
+  }
+  .prose ol {
+    list-style: decimal;
+  }
+  .prose li + li {
+    margin-top: 0.4em;
+  }
+  .prose li::marker {
+    color: var(--fg-muted);
+  }
+  .prose a {
+    color: var(--accent-high);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  :root[data-theme="dark"] .prose a {
+    color: var(--accent);
+  }
+  .prose strong {
+    font-weight: 650;
+    color: var(--fg-strong);
+  }
+  .prose blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 1em;
+    color: var(--fg-muted);
+  }
+  .prose hr {
+    border-top: 1px solid var(--border);
+    margin: 2.5em 0;
+  }
+}

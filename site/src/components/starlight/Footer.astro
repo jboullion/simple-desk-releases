@@ -1,0 +1,25 @@
+---
+// Starlight override: the usual docs footer (pagination), then the site footer.
+import Default from "@astrojs/starlight/components/Footer.astro";
+import SiteFooter from "../SiteFooter.astro";
+---
+
+<Default />
+<div class="docs-site-footer">
+  <SiteFooter />
+</div>
+
+<style>
+  .docs-site-footer {
+    margin-top: 3rem;
+  }
+  .docs-site-footer :global(.site-footer) {
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+  }
+  .docs-site-footer :global(.site-footer > div) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import { Moon, Sun } from "lucide-static";
+import Icon from "./Icon.astro";
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  class="inline-flex size-9 items-center justify-center rounded-md text-fg-muted hover:bg-bg-muted hover:text-fg"
+  aria-label="Switch to dark theme"
+  title="Switch to dark theme"
+>
+  <span class="theme-icon-light"><Icon svg={Moon} size={18} /></span>
+  <span class="theme-icon-dark"><Icon svg={Sun} size={18} /></span>
+</button>
+
+<style>
+  .theme-icon-dark {
+    display: none;
+  }
+  :global([data-theme="dark"]) .theme-icon-light {
+    display: none;
+  }
+  :global([data-theme="dark"]) .theme-icon-dark {
+    display: inline;
+  }
+</style>
+
+<script>
+  // Flips between light and dark and remembers it (the docs' theme menu also offers "Auto").
+  function label(button: HTMLElement) {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    button.setAttribute("aria-label", `Switch to ${next} theme`);
+    button.title = `Switch to ${next} theme`;
+  }
+  for (const button of document.querySelectorAll<HTMLElement>("[data-theme-toggle]")) {
+    label(button);
+    button.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem("starlight-theme", next);
+      } catch {}
+      label(button);
+    });
+  }
+</script>

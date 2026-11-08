@@ -1,0 +1,16 @@
+{/* Same rule and storage key as Starlight's ThemeProvider, inlined so the page never flashes the wrong theme. */}
+<script is:inline>
+  (() => {
+    let stored = null;
+    try {
+      stored = localStorage.getItem("starlight-theme");
+    } catch {}
+    const theme =
+      stored === "light" || stored === "dark"
+        ? stored
+        : matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>

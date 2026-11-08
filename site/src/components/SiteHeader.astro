@@ -1,0 +1,41 @@
+---
+import { Download } from "lucide-static";
+import { releasesUrl, siteConfig } from "../site.config";
+import { url } from "../lib/url";
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const path = Astro.url.pathname;
+const current = (p: string) => (path.startsWith(url(p)) ? "page" : undefined);
+---
+
+<header class="sticky top-0 z-20 border-b border-border bg-bg/90 backdrop-blur supports-[backdrop-filter]:bg-bg/75">
+  <div class="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4 sm:gap-4 sm:px-6">
+    <a href={url()} class="mr-auto flex items-center gap-2.5 font-semibold text-fg-strong no-underline">
+      <Logo size={28} />
+      <span class="text-[1.05rem]">{siteConfig.name}</span>
+    </a>
+    <nav aria-label="Main" class="flex items-center gap-1 text-sm sm:gap-2">
+      <a
+        href={url("docs/")}
+        aria-current={current("docs/")}
+        class="rounded-md px-2.5 py-1.5 text-fg-muted hover:bg-bg-muted hover:text-fg aria-[current=page]:text-fg"
+        >Docs</a
+      >
+      <a
+        href={releasesUrl}
+        class="hidden rounded-md px-2.5 py-1.5 text-fg-muted hover:bg-bg-muted hover:text-fg sm:inline-block">Releases</a
+      >
+      <ThemeToggle />
+      <a
+        href={url("download/")}
+        aria-current={current("download/")}
+        class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 font-medium text-accent-fg hover:brightness-110"
+      >
+        <Icon svg={Download} size={16} />
+        Download
+      </a>
+    </nav>
+  </div>
+</header>
