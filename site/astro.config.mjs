@@ -68,6 +68,7 @@ export default defineConfig({
           items: [
             { label: "AI sidebar", slug: "docs/ai/sidebar" },
             { label: "Connecting agents (MCP)", slug: "docs/ai/agents" },
+            { label: "Activity and undo", slug: "docs/ai/activity" },
           ],
         },
         {

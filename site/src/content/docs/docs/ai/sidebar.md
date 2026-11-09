@@ -36,11 +36,11 @@ looking at ("Working on: …"). It can:
 ## Undo, and asking first
 
 Every change shows as a chip with **Undo**, which takes back just that change, even after you've kept typing elsewhere.
-Deleting or overwriting a file always asks you first.
+Overwriting a file or deleting to-dos always asks you first.
 
 **Settings → AI → Activity** lists the changes an AI made since the app started (not what it only read). Changes made
 close together to the same document are grouped, like "Edited plan.md · 22 changes", with **Undo all**; open a row to undo
-a single change.
+a single change. [AI activity and undo](/docs/ai/activity/) explains what each kind of Undo does.
 
 ## Pictures
 

@@ -5,7 +5,8 @@ description: Let Claude Desktop, Claude Code, Codex or any MCP client work in yo
 
 Simple Desk can act as an [MCP](https://modelcontextprotocol.io) server, so AI agents on your computer (Claude Desktop,
 Claude Code, Codex, or any MCP client) can read and edit your documents and to-dos while Simple Desk is open. Their edits
-appear live, with their name on the cursor, and can be undone like the [AI sidebar](/docs/ai/sidebar/)'s.
+appear live, with their name on the cursor, and every change is listed in
+[AI activity](/docs/ai/activity/), where you can undo it.
 
 This is in the desktop app only, and off until you turn it on.
 
