@@ -55,7 +55,7 @@ a service's list of models also contacts that service.
 
 ### Agents (MCP, optional, desktop only)
 
-If you allow agents to connect (Settings → AI → Local), the app accepts connections **only from your own computer**
+If you enable the MCP server (Settings → AI → MCP), the app accepts connections **only from your own computer**
 (`127.0.0.1`), and only with a secret token. It's off by default. What a connected agent does with what it reads is up
 to that agent and the AI service behind it.
 

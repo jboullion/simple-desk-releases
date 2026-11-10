@@ -12,7 +12,7 @@ This is in the desktop app only, and off until you turn it on.
 
 ## Claude Desktop
 
-1. Open **Settings → AI → Local**.
+1. Open **Settings → AI → MCP**.
 2. Press **Add to Claude Desktop**. Simple Desk makes a Claude Desktop extension (`Simple Desk.mcpb`) for this computer
    and opens it, and Claude Desktop shows its **Install** dialog.
 3. Install it. If the dialog doesn't appear, install the file from Claude Desktop → Settings → Extensions → Advanced
@@ -20,7 +20,7 @@ This is in the desktop app only, and off until you turn it on.
 
 ## Claude Code, Codex and other clients
 
-1. In **Settings → AI → Local**, tick **Allow agents to connect**.
+1. In **Settings → AI → MCP**, tick **Enable MCP server**.
 2. Copy the entry for your agent. For Claude Code it's a command to run in a terminal; for others it's a snippet for the
    agent's configuration file.
 
