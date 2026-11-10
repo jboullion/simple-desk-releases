@@ -22,7 +22,7 @@ document writes it into the library.
 
 - **To-do**, **Markdown**, **PDF** and the **Calculator** are tuned for touch. To-do reminders are scheduled with
   Android, so they arrive while the app is closed.
-- **CSV**, **Board**, **JSON** and the **API client** open as they are.
+- **CSV**, **HTML**, **Board**, **Meme Maker**, **JSON** and the **API client** open as they are.
 - **Paint** and **Images** aren't offered on phones yet.
 - [Live sharing](/docs/sharing/live-sharing/) works: scan a share's QR code with the phone to join.
 - AI keys can't be stored on Android yet, and agents (MCP) are desktop only.

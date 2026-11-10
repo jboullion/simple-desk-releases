@@ -2,6 +2,7 @@
 import {
   Braces,
   Calculator,
+  CodeXml,
   FileText,
   FileType2,
   Images,
@@ -34,11 +35,19 @@ export const apps: AppInfo[] = [
     slug: "markdown",
   },
   {
+    id: "html",
+    name: "HTML",
+    icon: CodeXml,
+    color: "var(--tool-html)",
+    summary: "Edit a web page with the rendered page beside the code. Its scripts stay off until you turn them on.",
+    slug: "html",
+  },
+  {
     id: "csv",
     name: "CSV",
     icon: Sheet,
     color: "var(--tool-csv)",
-    summary: "Edit big spreadsheets fast: sort, filter, find and replace, fill series, and keep the file's exact format.",
+    summary: "Edit big spreadsheets fast: sort, filter, find and replace, fill series, and keep the file's exact format. Opens Excel and OpenDocument workbooks too.",
     slug: "csv",
   },
   {

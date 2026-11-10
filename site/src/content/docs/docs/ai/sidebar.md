@@ -6,7 +6,7 @@ description: Chat with an AI about your documents. Bring your own key or use a l
 AI in Simple Desk works like a fast collaborator: its edits appear live in your open documents, with its name on the
 cursor, and each one can be undone on its own. It's optional and does nothing until you set up a model service.
 
-![The AI sidebar next to a Markdown document, after the AI replaced a word, with an Undo button](../../../../assets/screens/ai.png)
+![The AI sidebar next to a Markdown document, after the AI replaced a word, with Show and Undo buttons](../../../../assets/screens/ai.png)
 
 ## Set up a model
 
@@ -29,13 +29,24 @@ Open it with **Ctrl+Shift+A**, the sparkle button at the top right, or **Ctrl+K 
 looking at ("Working on: …"). It can:
 
 - answer questions about the document and summarize it;
-- edit Markdown with focused changes (find and replace, insert), never a blind rewrite;
-- create documents, browse and search your library, and read text files;
+- edit text, Markdown and HTML with focused changes (find and replace, insert), never a blind rewrite;
+- read and change JSON by path, and format, minify or sort it;
+- query and edit tables, including Excel and OpenDocument sheets: cells, rows, columns, sorting;
+- add, move and comment on things on a board, and look at a picture of it;
+- plot and analyze graphs, and work out calculations;
+- read PDFs, fill in forms, add text, and rotate, delete, move or extract pages;
+- edit pictures (resize, crop, shapes, text, colors) and generate new ones;
+- fill in memes, edit API collections and send their requests, and convert images or make icon sets;
+- create documents, browse and search your library;
 - add, update and complete to-dos.
+
+It uses each app's own tools, so it works on the document the way the app does. A file that's open in a tab changes in
+front of you.
 
 ## Undo, and asking first
 
-Every change shows as a chip with **Undo**, which takes back just that change, even after you've kept typing elsewhere.
+Every change shows as a chip with **Show** and **Undo**. **Show** opens the document at the change; **Undo** takes back
+just that change, even after you've kept typing elsewhere.
 Overwriting a file or deleting to-dos always asks you first.
 
 **Settings → AI → Activity** lists the changes an AI made since the app started (not what it only read). Changes made

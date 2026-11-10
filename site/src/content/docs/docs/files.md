@@ -21,7 +21,8 @@ taken to the tab that already has it.
 | File | Opens in |
 |---|---|
 | `.md`, `.markdown` | [Markdown](/docs/apps/markdown/) |
-| `.csv`, `.tsv` | [CSV](/docs/apps/csv/) |
+| `.html`, `.htm`, `.xhtml` | [HTML](/docs/apps/html/) |
+| `.csv`, `.tsv`, `.xlsx`, `.ods` | [CSV](/docs/apps/csv/) |
 | `.pdf` | [PDF](/docs/apps/pdf/) |
 | `.png`, `.jpg`, `.webp`, `.bmp`, `.gif`, `.ico` | [Paint](/docs/apps/paint/) |
 | `.board.svg` | [Board](/docs/apps/board/) |

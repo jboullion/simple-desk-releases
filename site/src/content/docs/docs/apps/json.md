@@ -6,6 +6,8 @@ description: Format, minify, validate and repair JSON, and browse it as a tree.
 A JSON editor with a tree view beside the text. It opens `.json`, `.jsonc` and `.geojson` files, and anything you paste
 into a new one. Turn it on in **Settings → Apps**.
 
+![A JSON config file in Text and tree view, with the tree beside the text](../../../../assets/screens/json.png)
+
 ## Format without surprises
 
 **Format** (2 spaces, 4 spaces or tabs; **Shift+Alt+F**), **Minify** and **Sort keys** only change the layout. Numbers keep

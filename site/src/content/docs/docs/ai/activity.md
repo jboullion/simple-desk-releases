@@ -7,6 +7,8 @@ Whether a change comes from the [AI sidebar](/docs/ai/sidebar/) or from an [agen
 Simple Desk records it, lets you jump to it, and lets you take it back. You can always see who changed what and where,
 and nothing an AI does has to be permanent.
 
+![Settings → AI with the Activity list: changes by Claude Code, each with Show and Undo](../../../../assets/screens/activity.png)
+
 ## What gets recorded
 
 Every change an AI makes is recorded:
@@ -80,7 +82,7 @@ An undone change is struck through and marked **Undone**. What Undo does depends
 | A file that wasn't open | Puts back the whole file as it was before the AI wrote it. Anything changed in that file since then is replaced too. |
 | A new file the AI created | Moves the file to the Recycle Bin (the Trash on macOS and Linux), so you can still get it back. |
 | To-dos | Puts back just the to-dos that change touched, as they were before. Your other to-dos aren't affected. |
-| A picture in Paint | Not in the Activity list's Undo. The picture arrives as a selection you can move; keep it, or press **Ctrl+Z** in Paint. |
+| A picture in Paint | An edit to an open picture is taken back as long as nothing changed after it; otherwise use **Ctrl+Z** in Paint. A picture that wasn't open is put back as it was. A generated picture arrives as a selection you can move: keep it, or press **Ctrl+Z**. |
 
 **Ctrl+Z works too.** In an open document, each AI edit is its own step in the editor's undo history, so pressing
 Ctrl+Z right after an AI edit takes it back. Use the Undo button when you want one AI edit gone and everything after it

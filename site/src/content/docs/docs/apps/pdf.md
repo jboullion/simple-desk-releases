@@ -5,6 +5,8 @@ description: Read, search, highlight, sign and fill PDFs, and merge, split, rota
 
 A PDF viewer and editor: read and search, fill forms, highlight, draw, sign, and rearrange pages.
 
+![A registration form open in PDF, with its fields filled in and page thumbnails on the left](../../../../assets/screens/pdf.png)
+
 ## Reading
 
 - Thumbnails and the document outline in the side panel.

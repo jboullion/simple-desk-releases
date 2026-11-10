@@ -9,7 +9,7 @@ On a Mac, the shortcuts below use **Ctrl** for now, not Cmd.
 
 | Shortcut | Does |
 |---|---|
-| Ctrl+K | Command palette: commands, apps, recent files |
+| Ctrl+K (or Ctrl+Shift+P) | Command palette: commands, apps, recent files |
 | Ctrl+, | Settings |
 | Ctrl+Shift+E | Show or hide the Files panel |
 | Ctrl+Shift+A | Show or hide the AI sidebar |
@@ -18,7 +18,7 @@ On a Mac, the shortcuts below use **Ctrl** for now, not Cmd.
 | Ctrl+S | Save |
 | Ctrl+Shift+S | Save as |
 | Ctrl+W | Close the tab |
-| Ctrl+Tab | Next tab |
+| Ctrl+Tab / Ctrl+Shift+Tab | Next / previous tab |
 | F2 | Rename (Files panel) |
 | Del | Move to Recycle Bin / Trash (Files panel) |
 
@@ -57,6 +57,8 @@ On a Mac, the shortcuts below use **Ctrl** for now, not Cmd.
 | X | Swap color 1 and color 2 |
 | [ / ] | Smaller / bigger tool |
 | Ctrl+A, Ctrl+C / X / V | Select all, copy, cut, paste |
+| Del | Delete the selection |
+| Ctrl+Z / Ctrl+Y | Undo / redo |
 | Space+drag or middle-drag | Pan |
 | Ctrl+wheel | Zoom at the cursor |
 | Shift while drawing | Square, circle or 45° line |
@@ -74,7 +76,8 @@ On a Mac, the shortcuts below use **Ctrl** for now, not Cmd.
 | P | Pen |
 | F | Frame |
 | C | Comment |
-| Ctrl+C / V / D | Copy, paste, duplicate |
+| Ctrl+C / V / D | Copy, paste, duplicate (works across boards) |
+| Wheel | Pan |
 | Ctrl+wheel | Zoom |
 
 ## Meme Maker

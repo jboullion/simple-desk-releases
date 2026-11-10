@@ -5,6 +5,8 @@ description: Send HTTP requests with variables and environments; import cURL com
 
 A small API client for testing web APIs. Turn it on in **Settings → Apps**.
 
+![An API collection with a GET request, its parameters, and the JSON response below it](../../../../assets/screens/api.png)
+
 ## Collections
 
 A collection is one `.api.json` file, friendly to version control, with requests in folders, collection variables,

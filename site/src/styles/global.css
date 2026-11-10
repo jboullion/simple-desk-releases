@@ -34,6 +34,7 @@
   --tool-images: #4d7c0f;
   --tool-api: #4f46e5;
   --tool-json: #0891b2;
+  --tool-html: #c026d3;
   --folder: #9a6a3a;
   /* Extra steps for Starlight's gray scale (strongest text first). */
   --fg-strong: #0f1114;
@@ -69,6 +70,7 @@
   --tool-images: #a3e635;
   --tool-api: #818cf8;
   --tool-json: #22d3ee;
+  --tool-html: #e879f9;
   --folder: #d2a679;
   --fg-strong: #f5f6f8;
   --gray-2: #c4cad2;
@@ -104,6 +106,7 @@
     --tool-images: #a3e635;
     --tool-api: #818cf8;
     --tool-json: #22d3ee;
+    --tool-html: #e879f9;
     --folder: #d2a679;
     --fg-strong: #f5f6f8;
     --gray-2: #c4cad2;

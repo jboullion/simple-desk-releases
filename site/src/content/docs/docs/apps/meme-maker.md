@@ -5,6 +5,8 @@ description: Make memes from popular templates or your own pictures, saved as an
 
 Make memes from popular templates or your own pictures. Turn it on in **Settings → Apps**.
 
+![A meme with outlined top and bottom text over a smiley picture, with the Add, Picture and Layers panel](../../../../assets/screens/meme.png)
+
 ## Start a meme
 
 - Pick one of [Imgflip](https://imgflip.com)'s popular templates (searchable; the list is cached so it shows offline

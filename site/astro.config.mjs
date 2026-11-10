@@ -37,6 +37,7 @@ export default defineConfig({
             { label: "Opening and saving files", slug: "docs/files" },
             { label: "Using several computers", slug: "docs/several-computers" },
             { label: "Updates", slug: "docs/updates" },
+            { label: "Settings", slug: "docs/settings" },
             { label: "Keyboard shortcuts", slug: "docs/shortcuts" },
           ],
         },
@@ -45,6 +46,7 @@ export default defineConfig({
           items: [
             { label: "To-do & sticky notes", slug: "docs/apps/todo" },
             { label: "Markdown", slug: "docs/apps/markdown" },
+            { label: "HTML", slug: "docs/apps/html" },
             { label: "CSV", slug: "docs/apps/csv" },
             { label: "PDF", slug: "docs/apps/pdf" },
             { label: "Paint", slug: "docs/apps/paint" },

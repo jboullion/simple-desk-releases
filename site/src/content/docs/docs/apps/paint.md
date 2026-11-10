@@ -6,6 +6,8 @@ description: Draw and edit pictures with brushes, shapes, text, fill, selections
 A familiar paint program for PNG, JPEG, WebP and BMP pictures (it also opens GIF and ICO). Opening a picture file opens
 it in Paint.
 
+![A sunset picture open in Paint, with the drawing tools and color palette above it](../../../../assets/screens/paint.png)
+
 ## Tools
 
 - **Pencil**, **brush** and **eraser** (to color 2 or to transparent).

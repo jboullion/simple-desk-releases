@@ -22,8 +22,10 @@ The Files panel (the folder button at the top left, or **Ctrl+Shift+E**) shows t
 - **Library**: your library folder.
 - **Locations**: other folders you add with **Add location…**, for example a project folder or a USB drive.
 
-Click a file to open it in its app. Right-click for **New file**, **New folder**, **Rename** (F2), **Move to Recycle
-Bin** (Del) and **Reveal in Explorer** (Finder on a Mac). Drag rows to move them between folders, or drop files from
+Click a file to open it in its app. Right-click for **New file**, **New folder**, **Open in** another app (for example
+a picture in Images), **Open with default app**, **Rename** (F2), **Copy path**, **Move to Recycle Bin** (Del) and
+**Reveal in Explorer** (Finder on a Mac). Right-click a location for **Remove location**, which only takes it off the
+panel. Drag rows to move them between folders, or drop files from
 your computer onto a folder to copy them in. The Open and Save dialogs start in the folder you selected.
 
 ## Choosing your apps
@@ -31,7 +33,7 @@ your computer onto a folder to copy them in. The Open and Save dialogs start in 
 **Settings → Apps** turns apps on or off. Turned-off apps disappear from Home, the sidebar, the command palette and the
 **New** menu, but their files still open when you double-click one.
 
-To-do, Calculator, Meme Maker, Images, the API client and JSON start turned off to keep things simple. Turn on the ones
+To-do, HTML, Calculator, Meme Maker, Images, the API client and JSON start turned off to keep things simple. Turn on the ones
 you want.
 
 Each app has its own color (Markdown blue, CSV green, PDF red, Paint pink, Board violet and so on). Its icon uses that

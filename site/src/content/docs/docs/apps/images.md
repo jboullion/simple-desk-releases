@@ -6,6 +6,8 @@ description: Convert and resize pictures in bulk, make app icon sets, and turn v
 Batch image conversion, icon sets and video-to-GIF. Turn it on in **Settings → Apps**, then right-click pictures in
 the Files panel → **Open in Images**. All your images go into one Images tab.
 
+![Four photos queued in Images for converting to PNG, with format, resize and save options](../../../../assets/screens/images.png)
+
 ## Convert
 
 Convert to PNG, JPEG, WebP (lossy with a quality setting, or lossless), ICO (16 to 256 px), BMP, TIFF or GIF, and resize

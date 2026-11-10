@@ -1,11 +1,12 @@
 ---
 title: CSV
-description: A fast spreadsheet-style editor for CSV and TSV files that keeps the file's exact format.
+description: A fast spreadsheet-style editor for CSV and TSV files that keeps the file's exact format, and opens Excel and OpenDocument workbooks.
 ---
 
 A spreadsheet-style editor for `.csv` and `.tsv` files. It handles large files smoothly and keeps your file's format:
 the delimiter, quoting, line endings and encoding are detected and kept, so a file you open and save without changes
-stays byte for byte the same.
+stays byte for byte the same. It also opens Excel (`.xlsx`) and OpenDocument (`.ods`) workbooks; see
+[below](#excel-and-opendocument-workbooks).
 
 ![A budget CSV with the Details panel showing statistics for the Amount column](../../../../assets/screens/csv.png)
 
@@ -47,6 +48,18 @@ and encoding.
 
 Rows with a different number of fields than the rest are flagged. The warning in the status bar jumps between them and
 can pad short rows.
+
+## Excel and OpenDocument workbooks
+
+`.xlsx` and `.ods` files open with a tab for each sheet at the bottom. Everything above works on the sheet you're on.
+
+Workbooks are edited as values: dates show as `2025-01-31`, and formulas show their last result. When you save over a
+workbook, only the sheets you edited are rewritten, as plain values, so their formatting, formulas and charts are lost.
+The first save asks before it does this, and offers **Save a copy…** instead. Sheets you didn't edit are kept exactly as
+they were.
+
+**Save As** offers Excel workbook and OpenDocument spreadsheet after CSV and TSV. Saving a workbook as CSV saves the
+sheet you're on. Old `.xls` files aren't supported: save them as `.xlsx` in Excel first.
 
 ## Export
 
