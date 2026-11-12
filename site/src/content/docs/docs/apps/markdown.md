@@ -27,6 +27,20 @@ You can edit in the preview as well as in the text:
 Every change is written to the Markdown, so undo, save and the text editor stay in step. Only the paragraphs you edit
 are rewritten; the rest of the file stays exactly as it was.
 
+## Lists
+
+In the text editor, press **Enter** at the end of a list item to start the next one: `- ` again, or the next number in
+a numbered list. A task item (`- [x]`) starts a new empty box. Press **Enter** on an empty item to end the list.
+
+## Paste pictures
+
+Copy a picture (a screenshot, or an image from a web page) and press **Ctrl+V** in either pane. Simple Desk saves it in
+a hidden `.pasted-images` folder next to the document and adds a link to it, like
+`![](.pasted-images/trip-plan-20261111-142301.png)`, so the picture also shows in other Markdown editors.
+
+Delete the picture from the document and save, and its file goes to the Recycle Bin, unless another Markdown file in the
+same folder still uses it. Until you save, **Ctrl+Z** brings it back.
+
 ## Diagrams
 
 A code block that starts with ` ```mermaid ` shows as a [Mermaid](https://mermaid.js.org) diagram in the preview:

@@ -37,6 +37,12 @@ files dropped on a folder in the Files panel are copied into it.
 The Files panel's right-click menu also has **Open with**, for example "Open in Images" to convert a picture, or
 opening an `.api.json` as plain JSON.
 
+## Dragging files out
+
+Drag a file from the Files panel out of the Simple Desk window and drop it on another app: Explorer or Finder copies it
+there, and Slack, Teams or an email draft attaches it. The original stays where it is. Folders only move inside the
+Files panel. This works in the desktop app, not on phones.
+
 ## Saving
 
 - **Ctrl+S** saves. A new document asks where to save it the first time, starting in the folder selected in the Files

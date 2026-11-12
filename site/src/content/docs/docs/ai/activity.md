@@ -66,6 +66,28 @@ or opens the file again if you closed it, and points at what changed:
 If the file wasn't open when the AI changed it, Show opens it at where the change was made. A change you've undone has
 no Show.
 
+## Seeing what changed
+
+**Changes** shows exactly what a change did. It's on each chip in the sidebar, on each row of the Activity list (for a
+group, every change in it, oldest first), and on each single change when you open a group.
+
+- **Text files** (Markdown, JSON, HTML and other text): the removed lines in red and the added lines in green, with line
+  numbers and the changed words highlighted, plus a few unchanged lines around them.
+- **Tables**: changed cells as before and after, and the rows and columns that were added or removed. A sort says how
+  many rows it reordered.
+
+The dialog also has **Show in document** and **Undo**. Like the list, changes are kept until you quit Simple Desk.
+
+## Who wrote this text
+
+In a Markdown document, put the caret in text an AI wrote and the status bar at the bottom says who and when, like
+"Written by Claude · 3:42 PM". **View change** opens that change. In the preview, it says "Changed by …" for the
+paragraph you're in. **Highlight AI text** in the status bar tints everything an AI wrote in its color.
+
+Text you type inside an AI's paragraph stays yours, and undoing an AI's change removes its marks. Simple Desk knows
+who wrote what only while the tab stays open. It isn't saved in the file, and it covers only edits made while the
+document was open.
+
 ## Undoing a change
 
 There are two places to undo:
